@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noor Community — Member Profile & Partner Offers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16261D;
+    --ink-soft:#3C4A40;
+    --paper:#F2EEE2;
+    --paper-raised:#FBF9F2;
+    --gold:#B4893F;
+    --gold-deep:#8C6A2E;
+    --rust:#9B4B32;
+    --green-deep:#1F3D2B;
+    --line:rgba(22,38,29,0.14);
+    --shadow:0 10px 30px rgba(22,38,29,0.10);
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+    font-variant-numeric:tabular-nums;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important; transition:none!important; scroll-behavior:auto!important;}
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    background:var(--ink);
+    color:var(--paper-raised);
+    padding:16px 20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .topbar .monogram{
+    width:30px;height:30px;
+    border-radius:8px;
+    background:linear-gradient(160deg,var(--gold) 0%, var(--gold-deep) 100%);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--ink);
+    flex-shrink:0;
+  }
+  .topbar .name{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(242,238,226,0.75);
+  }
+
+  /* ---------- Member ID card ---------- */
+  .card-stage{
+    background:
+      radial-gradient(1000px 460px at 20% -10%, rgba(180,137,63,0.20), transparent 60%),
+      linear-gradient(180deg,var(--ink) 0%, #1B2E22 100%);
+    padding:26px 18px 46px;
+  }
+  .id-card{
+    max-width:420px;
+    margin:0 auto;
+    background:var(--paper-raised);
+    border-radius:18px;
+    box-shadow:0 20px 45px rgba(0,0,0,0.28);
+    overflow:hidden;
+    position:relative;
+  }
+  .id-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:6px;
+    background:linear-gradient(90deg,var(--gold) 0%, var(--rust) 100%);
+  }
+  .id-card-inner{
+    padding:26px 22px 20px;
+  }
+  .id-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:20px;
+  }
+  .id-top .community{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+  }
+  .id-top .community strong{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-size:16px;
+    color:var(--ink);
+    letter-spacing:0;
+    margin-top:2px;
+  }
+  .status-chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:var(--green-deep);
+    color:var(--paper-raised);
+    padding:5px 10px;
+    border-radius:999px;
+  }
+  .id-body{
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .photo{
+    width:76px;height:76px;
+    border-radius:50%;
+    background:linear-gradient(160deg,var(--gold) 0%, var(--rust) 100%);
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--paper-raised);
+    font-family:'Fraunces',serif;
+    font-size:26px;
+    font-weight:600;
+    border:3px solid var(--paper-raised);
+    box-shadow:0 0 0 1px var(--line);
+  }
+  .id-fields h2{
+    font-size:22px;
+    line-height:1.15;
+  }
+  .id-fields .email{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+  .id-divider{
+    border-top:1px dashed var(--line);
+    margin:20px 0 14px;
+  }
+  .id-meta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .id-meta .k{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    display:block;
+    margin-bottom:3px;
+  }
+  .id-meta .v{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14.5px;
+    color:var(--ink);
+    font-weight:600;
+  }
+  .id-card-strip{
+    background:var(--ink);
+    color:rgba(242,238,226,0.65);
+    padding:10px 22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.06em;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  .card-hint{
+    text-align:center;
+    color:rgba(242,238,226,0.55);
+    font-size:12px;
+    max-width:340px;
+    margin:16px auto 0;
+    line-height:1.55;
+  }
+
+  /* ---------- Offers section ---------- */
+  .offers{
+    padding:44px 0 80px;
+  }
+  .offers-head{
+    padding:0 20px;
+    max-width:640px;
+    margin:0 auto 26px;
+  }
+  .offers-head .kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    display:block;
+    margin-bottom:10px;
+  }
+  .offers-head h2{font-size:26px;}
+  .offers-head p{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-top:10px;
+    line-height:1.6;
+  }
+
+  /* Tabs */
+  .tabs{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:4px 20px 14px;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+    position:sticky;
+    top:0;
+    background:var(--paper);
+    z-index:10;
+    padding-top:12px;
+  }
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{
+    flex:0 0 auto;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.02em;
+    padding:9px 16px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+    color:var(--ink-soft);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .2s ease;
+  }
+  .tab.active{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--paper-raised);
+  }
+  .tab .dot{
+    display:inline-block;
+    width:6px;height:6px;
+    border-radius:50%;
+    margin-right:7px;
+  }
+
+  /* Ledger cards */
+  .ledger-wrap{
+    padding:0 16px;
+    max-width:640px;
+    margin:0 auto;
+    display:grid;
+    gap:20px;
+  }
+  .ledger{
+    background:var(--paper-raised);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(14px);
+    animation:rise .5s ease forwards;
+    border-top:5px solid var(--accent, var(--gold));
+  }
+  @keyframes rise{
+    to{opacity:1; transform:translateY(0);}
+  }
+  .ledger-head{
+    padding:20px 20px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    border-bottom:1px dashed var(--line);
+  }
+  .ledger-head h3{
+    font-size:20px;
+  }
+  .ledger-head .cat{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--accent-deep, var(--gold-deep));
+    margin-top:4px;
+    display:block;
+  }
+  .badge{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--accent, var(--gold));
+    color:var(--paper-raised);
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;
+    flex-shrink:0;
+  }
+  .ledger-desc{
+    padding:14px 20px 4px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.55;
+  }
+  .tiers{
+    padding:6px 20px 20px;
+  }
+  .tier-row{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .tier-row:last-child{border-bottom:none;}
+  .tier-row .cond{
+    font-size:14px;
+    color:var(--ink);
+  }
+  .tier-row .leader{
+    flex:1;
+    border-bottom:1.5px dotted rgba(22,38,29,0.30);
+    height:0;
+    transform:translateY(-4px);
+    min-width:16px;
+  }
+  .tier-row .disc{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:16px;
+    color:var(--accent-deep, var(--gold-deep));
+    white-space:nowrap;
+  }
+  .tier-row.best{
+    position:relative;
+  }
+  .tier-row.best .cond::before{
+    content:"BEST VALUE";
+    display:block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px;
+    letter-spacing:0.08em;
+    color:var(--rust);
+    margin-bottom:3px;
+  }
+  .tier-note{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+    display:block;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(242,238,226,0.65);
+    padding:36px 20px;
+    text-align:center;
+    font-size:12.5px;
+  }
+  footer .fname{
+    font-family:'Fraunces',serif;
+    font-size:18px;
+    color:var(--paper-raised);
+    margin-bottom:6px;
+  }
+  footer a{
+    color:var(--gold);
+    text-decoration:none;
+  }
+
+  /* ---------- Responsive: tablet/desktop ---------- */
+  @media (min-width:720px){
+    .ledger-wrap{
+      grid-template-columns:1fr 1fr;
+      max-width:900px;
+    }
+    .offers-head{max-width:900px;}
+    .id-card{max-width:460px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="monogram">N</div>
+  <div class="name">Noor Community</div>
+</div>
+
+<section class="card-stage">
+  <div class="id-card">
+    <div class="id-card-inner">
+      <div class="id-top">
+        <div class="community">
+          Member of
+          <strong>Noor Community</strong>
+        </div>
+        <span class="status-chip">Active</span>
+      </div>
+      <div class="id-body">
+        <div class="photo" id="memberPhoto">AK</div>
+        <div class="id-fields">
+          <h2 id="memberName">Aisha Karim</h2>
+          <div class="email" id="memberEmail">aisha.karim@example.com</div>
+        </div>
+      </div>
+      <div class="id-divider"></div>
+      <div class="id-meta">
+        <div>
+          <span class="k">Community ID</span>
+          <span class="v mono" id="memberId">NC-2026-00417</span>
+        </div>
+        <div>
+          <span class="k">Member Since</span>
+          <span class="v mono">Mar 2024</span>
+        </div>
+        <div>
+          <span class="k">Tier</span>
+          <span class="v mono">Gold</span>
+        </div>
+        <div>
+          <span class="k">Partner Access</span>
+          <span class="v mono">4 businesses</span>
+        </div>
+      </div>
+    </div>
+    <div class="id-card-strip">
+      <span>NOOR COMMUNITY</span>
+      <span id="cardFooterId">NC-2026-00417</span>
+    </div>
+  </div>
+  <p class="card-hint">Show this card at any partner business below to redeem your member discount.</p>
+</section>
+
+<section class="offers" id="offers">
+  <div class="offers-head">
+    <span class="kicker">Partner Offers</span>
+    <h2>Discounts across every community partner.</h2>
+    <p>As a Noor Community member, these discounts apply automatically when you present your Community ID at checkout. Tap a category to filter.</p>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+  <div class="ledger-wrap" id="ledgerWrap"></div>
+</section>
+
+<footer>
+  <div class="fname">Noor Community</div>
+  <p>Jewelry · Hypermarket · Pharmacy · Fashion</p>
+  <p style="margin-top:10px;">© 2026 Noor Community. Offers valid for the current month, subject to change. <a href="#">Terms apply</a>.</p>
+</footer>
+
+<script>
+  // ---- Member profile (swap with real data / API response) ----
+  const MEMBER = {
+    name: "Aisha Karim",
+    email: "aisha.karim@example.com",
+    communityId: "NC-2026-00417",
+    tier: "Gold",
+    memberSince: "Mar 2024",
+    photoUrl: null // set to an image URL to show a real photo instead of initials
+  };
+
+  function initials(name){
+    return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  }
+
+  document.getElementById('memberName').textContent = MEMBER.name;
+  document.getElementById('memberEmail').textContent = MEMBER.email;
+  document.getElementById('memberId').textContent = MEMBER.communityId;
+  document.getElementById('cardFooterId').textContent = MEMBER.communityId;
+  const photoEl = document.getElementById('memberPhoto');
+  if(MEMBER.photoUrl){
+    photoEl.style.backgroundImage = `url(${MEMBER.photoUrl})`;
+    photoEl.style.backgroundSize = 'cover';
+    photoEl.style.backgroundPosition = 'center';
+    photoEl.textContent = '';
+  } else {
+    photoEl.textContent = initials(MEMBER.name);
+  }
+
+  // ---- Partner businesses & member discounts (swap with real data / API response) ----
+  const BUSINESSES = [
+    {
+      id: "jewelry",
+      name: "Noor Jewelry",
+      category: "Gold & Jewelry",
+      icon: "◆",
+      accent: "#B4893F",
+      accentDeep: "#8C6A2E",
+      desc: "Discounts apply on making charges, calculated at the day's gold rate, for verified community members only.",
+      tiers: [
+        { cond: "10g gold purchase", disc: "5% off", note: "on making charges" },
+        { cond: "25g gold purchase", disc: "10% off", note: "on making charges" },
+        { cond: "50g+ gold purchase", disc: "18% off", note: "making charges + free polish service", best: true }
+      ]
+    },
+    {
+      id: "hypermarket",
+      name: "Noor Hypermarket",
+      category: "Electronics & Home",
+      icon: "▣",
+      accent: "#1F3D2B",
+      accentDeep: "#16281C",
+      desc: "Applies to electronics, appliances, and home essentials when your Community ID is scanned at checkout.",
+      tiers: [
+        { cond: "Spend $200 on electronics", disc: "10% off" },
+        { cond: "Spend $500 on electronics", disc: "15% off", note: "+ free installation" },
+        { cond: "Spend $1000+ on electronics", disc: "20% off", note: "+ extended 2-year warranty", best: true }
+      ]
+    },
+    {
+      id: "pharmacy",
+      name: "Noor Pharmacy & Wellness",
+      category: "Health & Wellness",
+      icon: "✚",
+      accent: "#9B4B32",
+      accentDeep: "#7A3A27",
+      desc: "Everyday member discounts on medicines, supplements, and wellness products.",
+      tiers: [
+        { cond: "Purchase over $50", disc: "5% off" },
+        { cond: "Monthly essentials bundle", disc: "12% off", note: "pre-set bundle of recurring items", best: true },
+        { cond: "Senior citizen members", disc: "10% off", note: "flat rate, every day" }
+      ]
+    },
+    {
+      id: "fashion",
+      name: "Noor Fashion House",
+      category: "Apparel & Accessories",
+      icon: "✂",
+      accent: "#6B4A8C",
+      accentDeep: "#523670",
+      desc: "Mix and match across menswear, womenswear, and accessories. Gold-tier members get an extra stack discount.",
+      tiers: [
+        { cond: "Buy 2, get 1 free item", disc: "50% off", note: "on the lowest-priced item" },
+        { cond: "Spend $150", disc: "15% off", best: true },
+        { cond: "Gold-tier members", disc: "+5% off", note: "stacks on any offer above" }
+      ]
+    }
+  ];
+
+  const tabsEl = document.getElementById('tabs');
+  const wrapEl = document.getElementById('ledgerWrap');
+  let active = "all";
+
+  function renderTabs(){
+    const allTab = `<button class="tab ${active==='all'?'active':''}" data-id="all"><span class="dot" style="background:#B4893F"></span>All partners</button>`;
+    const rest = BUSINESSES.map(b => `
+      <button class="tab ${active===b.id?'active':''}" data-id="${b.id}">
+        <span class="dot" style="background:${b.accent}"></span>${b.name.replace('Noor ','')}
+      </button>
+    `).join('');
+    tabsEl.innerHTML = allTab + rest;
+    tabsEl.querySelectorAll('.tab').forEach(t=>{
+      t.addEventListener('click', ()=>{
+        active = t.dataset.id;
+        renderTabs();
+        renderLedgers();
+      });
+    });
+  }
+
+  function renderLedgers(){
+    const list = active === 'all' ? BUSINESSES : BUSINESSES.filter(b=>b.id===active);
+    wrapEl.innerHTML = list.map((b,i) => `
+      <article class="ledger" style="--accent:${b.accent}; --accent-deep:${b.accentDeep}; animation-delay:${i*0.06}s">
+        <div class="ledger-head">
+          <div>
+            <h3>${b.name}</h3>
+            <span class="cat">${b.category}</span>
+          </div>
+          <div class="badge">${b.icon}</div>
+        </div>
+        <p class="ledger-desc">${b.desc}</p>
+        <div class="tiers">
+          ${b.tiers.map(t => `
+            <div class="tier-row ${t.best ? 'best' : ''}">
+              <div class="cond">
+                ${t.cond}
+                ${t.note ? `<span class="tier-note">${t.note}</span>` : ''}
+              </div>
+              <div class="leader"></div>
+              <div class="disc mono">${t.disc}</div>
+            </div>
+          `).join('')}
+        </div>
+      </article>
+    `).join('');
+  }
+
+  renderTabs();
+  renderLedgers();
+</script>
+
+</body>
+</html>
