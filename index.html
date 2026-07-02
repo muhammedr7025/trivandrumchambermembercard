@@ -9,16 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#16261D;
-    --ink-soft:#3C4A40;
-    --paper:#F2EEE2;
-    --paper-raised:#FBF9F2;
-    --gold:#B4893F;
-    --gold-deep:#8C6A2E;
+    --ink:#2C2871;
+    --ink-soft:#4A4786;
+    --paper:#F4F5F8;
+    --paper-raised:#FFFFFF;
+    --gold:#D4AF37;
+    --gold-deep:#AA8C2C;
     --rust:#9B4B32;
     --green-deep:#1F3D2B;
-    --line:rgba(22,38,29,0.14);
-    --shadow:0 10px 30px rgba(22,38,29,0.10);
+    --line:rgba(44, 40, 113, 0.14);
+    --shadow:0 10px 30px rgba(44, 40, 113, 0.10);
     --radius:14px;
   }
 
@@ -57,15 +57,10 @@
     align-items:center;
     gap:10px;
   }
-  .topbar .monogram{
-    width:30px;height:30px;
-    border-radius:8px;
-    background:linear-gradient(160deg,var(--gold) 0%, var(--gold-deep) 100%);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Fraunces',serif;
-    font-weight:700;
-    font-size:14px;
-    color:var(--ink);
+  .topbar .logo-img{
+    height:36px;
+    width:auto;
+    object-fit:contain;
     flex-shrink:0;
   }
   .topbar .name{
@@ -79,8 +74,8 @@
   /* ---------- Member ID card ---------- */
   .card-stage{
     background:
-      radial-gradient(1000px 460px at 20% -10%, rgba(180,137,63,0.20), transparent 60%),
-      linear-gradient(180deg,var(--ink) 0%, #1B2E22 100%);
+      radial-gradient(1000px 460px at 20% -10%, rgba(212,175,55,0.15), transparent 60%),
+      linear-gradient(180deg,var(--ink) 0%, #1A174A 100%);
     padding:26px 18px 46px;
   }
   .id-card{
@@ -408,8 +403,8 @@
 <body>
 
 <div class="topbar">
-  <div class="monogram">N</div>
-  <div class="name">Noor Community</div>
+  <img src="logo.png" alt="TCCI Logo" class="logo-img">
+  <div class="name">Trivandrum Chamber</div>
 </div>
 
 <section class="card-stage">
@@ -418,7 +413,7 @@
       <div class="id-top">
         <div class="community">
           Member of
-          <strong>Noor Community</strong>
+          <strong>Trivandrum Chamber</strong>
         </div>
         <span class="status-chip">Active</span>
       </div>
@@ -450,7 +445,7 @@
       </div>
     </div>
     <div class="id-card-strip">
-      <span>NOOR COMMUNITY</span>
+      <span>TRIVANDRUM CHAMBER</span>
       <span id="cardFooterId">NC-2026-00417</span>
     </div>
   </div>
@@ -461,7 +456,7 @@
   <div class="offers-head">
     <span class="kicker">Partner Offers</span>
     <h2>Discounts across every community partner.</h2>
-    <p>As a Noor Community member, these discounts apply automatically when you present your Community ID at checkout. Tap a category to filter.</p>
+    <p>As a Trivandrum Chamber member, these discounts apply automatically when you present your Community ID at checkout. Tap a category to filter.</p>
   </div>
 
   <div class="tabs" id="tabs"></div>
@@ -469,9 +464,9 @@
 </section>
 
 <footer>
-  <div class="fname">Noor Community</div>
+  <div class="fname">Trivandrum Chamber of Commerce & Industry</div>
   <p>Jewelry · Hypermarket · Pharmacy · Fashion</p>
-  <p style="margin-top:10px;">© 2026 Noor Community. Offers valid for the current month, subject to change. <a href="#">Terms apply</a>.</p>
+  <p style="margin-top:10px;">© 2026 Trivandrum Chamber. Offers valid for the current month, subject to change. <a href="#">Terms apply</a>.</p>
 </footer>
 
 <script>
@@ -507,12 +502,12 @@
   const BUSINESSES = [
     {
       id: "jewelry",
-      name: "Noor Jewelry",
+      name: "TCCI Jewelry",
       category: "Gold & Jewelry",
       icon: "◆",
-      accent: "#B4893F",
-      accentDeep: "#8C6A2E",
-      desc: "Discounts apply on making charges, calculated at the day's gold rate, for verified community members only.",
+      accent: "#D4AF37",
+      accentDeep: "#AA8C2C",
+      desc: "Discounts apply on making charges, calculated at the day's gold rate, for verified chamber members only.",
       tiers: [
         { cond: "10g gold purchase", disc: "5% off", note: "on making charges" },
         { cond: "25g gold purchase", disc: "10% off", note: "on making charges" },
@@ -521,11 +516,11 @@
     },
     {
       id: "hypermarket",
-      name: "Noor Hypermarket",
+      name: "TCCI Hypermarket",
       category: "Electronics & Home",
       icon: "▣",
-      accent: "#1F3D2B",
-      accentDeep: "#16281C",
+      accent: "#2C2871",
+      accentDeep: "#1D194A",
       desc: "Applies to electronics, appliances, and home essentials when your Community ID is scanned at checkout.",
       tiers: [
         { cond: "Spend $200 on electronics", disc: "10% off" },
@@ -535,7 +530,7 @@
     },
     {
       id: "pharmacy",
-      name: "Noor Pharmacy & Wellness",
+      name: "TCCI Pharmacy & Wellness",
       category: "Health & Wellness",
       icon: "✚",
       accent: "#9B4B32",
@@ -549,7 +544,7 @@
     },
     {
       id: "fashion",
-      name: "Noor Fashion House",
+      name: "TCCI Fashion House",
       category: "Apparel & Accessories",
       icon: "✂",
       accent: "#6B4A8C",
@@ -568,10 +563,10 @@
   let active = "all";
 
   function renderTabs(){
-    const allTab = `<button class="tab ${active==='all'?'active':''}" data-id="all"><span class="dot" style="background:#B4893F"></span>All partners</button>`;
+    const allTab = `<button class="tab ${active==='all'?'active':''}" data-id="all"><span class="dot" style="background:var(--gold)"></span>All partners</button>`;
     const rest = BUSINESSES.map(b => `
       <button class="tab ${active===b.id?'active':''}" data-id="${b.id}">
-        <span class="dot" style="background:${b.accent}"></span>${b.name.replace('Noor ','')}
+        <span class="dot" style="background:${b.accent}"></span>${b.name.replace('TCCI ','')}
       </button>
     `).join('');
     tabsEl.innerHTML = allTab + rest;
