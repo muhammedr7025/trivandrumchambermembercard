@@ -316,11 +316,39 @@
     font-size:17px;
     flex-shrink:0;
   }
+  .partner-meta{
+    padding:14px 20px 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 16px;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .partner-meta .meta-item{
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
   .ledger-desc{
-    padding:14px 20px 4px;
+    padding:10px 20px 10px;
     font-size:13.5px;
     color:var(--ink-soft);
     line-height:1.55;
+  }
+  .courses-list{
+    padding:0 20px 10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .courses-list span{
+    font-size:11px;
+    padding:4px 8px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;
   }
   .tiers{
     padding:6px 20px 20px;
@@ -465,7 +493,7 @@
 
 <footer>
   <div class="fname">Trivandrum Chamber of Commerce & Industry</div>
-  <p>Jewelry · Hypermarket · Pharmacy · Fashion</p>
+  <p>Education · Clothing · Electronics</p>
   <p style="margin-top:10px;">© 2026 Trivandrum Chamber. Offers valid for the current month, subject to change. <a href="#">Terms apply</a>.</p>
 </footer>
 
@@ -498,63 +526,47 @@
     photoEl.textContent = initials(MEMBER.name);
   }
 
-  // ---- Partner businesses & member discounts (swap with real data / API response) ----
+  // ---- Partner businesses & member discounts ----
   const BUSINESSES = [
     {
-      id: "jewelry",
-      name: "TCCI Jewelry",
-      category: "Gold & Jewelry",
-      icon: "◆",
+      id: "exatech",
+      name: "EXATECH Learning Hub",
+      category: "Education",
+      icon: "🎓",
       accent: "#D4AF37",
       accentDeep: "#AA8C2C",
-      desc: "Discounts apply on making charges, calculated at the day's gold rate, for verified chamber members only.",
-      tiers: [
-        { cond: "10g gold purchase", disc: "5% off", note: "on making charges" },
-        { cond: "25g gold purchase", disc: "10% off", note: "on making charges" },
-        { cond: "50g+ gold purchase", disc: "18% off", note: "making charges + free polish service", best: true }
-      ]
+      desc: "Diploma Courses & Certification.",
+      place: "Venjaramoodu & Pattom - Trivandrum",
+      contact: "9747336655",
+      validity: "September 2026",
+      discount: "20% off",
+      courses: ["Hospital Administration", "Logistics", "Robotics & AI", "Aviation Hospitality"]
     },
     {
-      id: "hypermarket",
-      name: "TCCI Hypermarket",
-      category: "Electronics & Home",
-      icon: "▣",
-      accent: "#2C2871",
-      accentDeep: "#1D194A",
-      desc: "Applies to electronics, appliances, and home essentials when your Community ID is scanned at checkout.",
-      tiers: [
-        { cond: "Spend $200 on electronics", disc: "10% off" },
-        { cond: "Spend $500 on electronics", disc: "15% off", note: "+ free installation" },
-        { cond: "Spend $1000+ on electronics", disc: "20% off", note: "+ extended 2-year warranty", best: true }
-      ]
-    },
-    {
-      id: "pharmacy",
-      name: "TCCI Pharmacy & Wellness",
-      category: "Health & Wellness",
-      icon: "✚",
-      accent: "#9B4B32",
-      accentDeep: "#7A3A27",
-      desc: "Everyday member discounts on medicines, supplements, and wellness products.",
-      tiers: [
-        { cond: "Purchase over $50", disc: "5% off" },
-        { cond: "Monthly essentials bundle", disc: "12% off", note: "pre-set bundle of recurring items", best: true },
-        { cond: "Senior citizen members", disc: "10% off", note: "flat rate, every day" }
-      ]
-    },
-    {
-      id: "fashion",
-      name: "TCCI Fashion House",
-      category: "Apparel & Accessories",
-      icon: "✂",
+      id: "maxfashion",
+      name: "Max Fashion",
+      category: "Clothing & Textile",
+      icon: "🛍️",
       accent: "#6B4A8C",
       accentDeep: "#523670",
-      desc: "Mix and match across menswear, womenswear, and accessories. Gold-tier members get an extra stack discount.",
-      tiers: [
-        { cond: "Buy 2, get 1 free item", disc: "50% off", note: "on the lowest-priced item" },
-        { cond: "Spend $150", disc: "15% off", best: true },
-        { cond: "Gold-tier members", disc: "+5% off", note: "stacks on any offer above" }
-      ]
+      desc: "Everyday fashion and apparel for the entire family.",
+      place: "Trivandrum",
+      contact: "9995066663",
+      validity: "December 2026",
+      discount: "25% off"
+    },
+    {
+      id: "myg",
+      name: "My G",
+      category: "Electronics",
+      icon: "📱",
+      accent: "#2C2871",
+      accentDeep: "#1D194A",
+      desc: "Top destination for mobiles, laptops, and smart gadgets.",
+      place: "All Kerala",
+      contact: "99955557778",
+      validity: "December 2026",
+      discount: "15% off"
     }
   ];
 
@@ -566,7 +578,7 @@
     const allTab = `<button class="tab ${active==='all'?'active':''}" data-id="all"><span class="dot" style="background:var(--gold)"></span>All partners</button>`;
     const rest = BUSINESSES.map(b => `
       <button class="tab ${active===b.id?'active':''}" data-id="${b.id}">
-        <span class="dot" style="background:${b.accent}"></span>${b.name.replace('TCCI ','')}
+        <span class="dot" style="background:${b.accent}"></span>${b.name}
       </button>
     `).join('');
     tabsEl.innerHTML = allTab + rest;
@@ -590,18 +602,22 @@
           </div>
           <div class="badge">${b.icon}</div>
         </div>
+        <div class="partner-meta">
+          <div class="meta-item"><span>📍</span> ${b.place}</div>
+          <div class="meta-item"><span>📞</span> ${b.contact}</div>
+          <div class="meta-item"><span>🗓️</span> Valid till ${b.validity}</div>
+        </div>
         <p class="ledger-desc">${b.desc}</p>
+        ${b.courses ? `<div class="courses-list">${b.courses.map(c => `<span>${c}</span>`).join('')}</div>` : ''}
         <div class="tiers">
-          ${b.tiers.map(t => `
-            <div class="tier-row ${t.best ? 'best' : ''}">
-              <div class="cond">
-                ${t.cond}
-                ${t.note ? `<span class="tier-note">${t.note}</span>` : ''}
-              </div>
-              <div class="leader"></div>
-              <div class="disc mono">${t.disc}</div>
+          <div class="tier-row best">
+            <div class="cond">
+              TCCI Members & Family
+              <span class="tier-note">Show your digital card to claim</span>
             </div>
-          `).join('')}
+            <div class="leader"></div>
+            <div class="disc mono" style="font-size:20px;">${b.discount}</div>
+          </div>
         </div>
       </article>
     `).join('');
