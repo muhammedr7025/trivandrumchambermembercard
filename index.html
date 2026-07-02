@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noor Community — Member Profile & Partner Offers</title>
+<title>Trivandrum Chamber of Commerce — Member Profile & Partner Offers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #0f172a;
@@ -30,11 +30,11 @@
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, .display {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
     margin: 0;
@@ -68,7 +68,7 @@
     flex-shrink: 0;
   }
   .topbar .name {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 0.05em;
@@ -137,7 +137,7 @@
     margin-bottom: 30px;
   }
   .id-top .community {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -146,7 +146,7 @@
   }
   .id-top .community strong {
     display: block;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     color: #ffffff;
     font-weight: 700;
@@ -180,7 +180,7 @@
     flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     color: #fff;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 28px;
     font-weight: 700;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
@@ -210,7 +210,7 @@
     gap: 20px 16px;
   }
   .id-meta .k {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
@@ -263,7 +263,7 @@
     text-align: center;
   }
   .offers-head .kicker {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 0.15em;
@@ -305,7 +305,7 @@
   
   .tab {
     flex: 0 0 auto;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 600;
     padding: 10px 20px;
@@ -390,7 +390,7 @@
     color: var(--ink);
   }
   .ledger-head .cat {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
@@ -496,7 +496,7 @@
     display: block;
   }
   .tier-row .disc {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-size: 26px;
     color: var(--accent);
@@ -507,7 +507,7 @@
   .tier-row.best .cond::before {
     content: "MEMBER EXCLUSIVE";
     display: inline-block;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -521,25 +521,61 @@
   /* ---------- Footer ---------- */
   footer {
     background: #0f172a;
-    color: rgba(255,255,255,0.5);
-    padding: 60px 24px;
-    text-align: center;
+    color: rgba(255,255,255,0.6);
+    padding: 80px 24px 40px;
     font-size: 14px;
     border-top: 1px solid rgba(255,255,255,0.1);
   }
-  footer .fname {
-    font-family: 'Outfit', sans-serif;
-    font-size: 24px;
+  .footer-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .footer-col .fname {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
-  footer a {
+  .footer-col p {
+    line-height: 1.8;
+    margin: 0;
+  }
+  .footer-col strong {
+    color: #fff;
+    font-weight: 600;
+  }
+  .footer-col a {
     color: var(--gold);
     transition: color 0.2s;
+    text-decoration: none;
   }
-  footer a:hover {
+  .footer-col a:hover {
     color: #fff;
+  }
+  .footer-bottom {
+    max-width: 1000px;
+    margin: 60px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+  .footer-bottom a {
+    color: var(--gold);
+    text-decoration: none;
   }
 
   /* ---------- Responsive ---------- */
@@ -562,7 +598,7 @@
 
 <div class="topbar">
   <img src="logo.jpeg" alt="TCCI Logo" class="logo-img">
-  <div class="name">Trivandrum Chamber</div>
+  <div class="name">Trivandrum Chamber of Commerce</div>
 </div>
 
 <section class="card-stage">
@@ -571,7 +607,7 @@
       <div class="id-top">
         <div class="community">
           Member of
-          <strong>Trivandrum Chamber</strong>
+          <strong>Trivandrum Chamber of Commerce</strong>
         </div>
         <span class="status-chip">Active</span>
       </div>
@@ -603,7 +639,7 @@
       </div>
     </div>
     <div class="id-card-strip">
-      <span>TRIVANDRUM CHAMBER</span>
+      <span>TRIVANDRUM CHAMBER OF COMMERCE</span>
       <span id="cardFooterId">NC-2026-00417</span>
     </div>
   </div>
@@ -622,9 +658,23 @@
 </section>
 
 <footer>
-  <div class="fname">Trivandrum Chamber of Commerce & Industry</div>
-  <p>Education · Clothing · Electronics</p>
-  <p style="margin-top:10px;">© 2026 Trivandrum Chamber. Offers valid for the current month, subject to change. <a href="#">Terms apply</a>.</p>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="fname">Who We Are</div>
+      <p><strong>TRIVANDRUM CHAMBER OF COMMERCE AND INDUSTRY (TCCI)</strong><br>
+      Affiliated to Federation of Chambers of Commerce and Industry (FICCI), New Delhi</p>
+    </div>
+    <div class="footer-col">
+      <div class="fname">Contact Us</div>
+      <p><strong>Trivandrum Chamber of Commerce and Industry (TCCI)</strong><br>
+      T.T.C Road, Jawahar Nagar, Kowdiar,<br>
+      Trivandrum-695 003, Kerala, India.<br>
+      <a href="mailto:chambertvm@gmail.com">chambertvm@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Trivandrum Chamber of Commerce. Offers valid for the current month, subject to change. <a href="#">Terms apply</a>.</p>
+  </div>
 </footer>
 
 <script>
